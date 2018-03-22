@@ -1,12 +1,12 @@
 {
   "name": "vue-slice",
   "version": "0.0.1",
-  "description": "A Vue.js project",
+  "description": "Easily create beautiful pie charts",
   "author": "Hayden Free",
-  "private": true,
+  "private": false,
   "jsnext:main": "src/index.js",
-  "module": "dist/pie-chart.min.js",
-  "main": "dist/pie-chart.min.js",
+  "module": "dist/vue-slice.min.js",
+  "main": "dist/vue-slice.min.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
