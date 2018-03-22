@@ -13,7 +13,7 @@ module.exports = merge(baseWebpackConfig, {
     library: 'vueSlice',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    filename: '../dist/pie-chart.min.js'
+    filename: '../dist/vue-slice.min.js'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
