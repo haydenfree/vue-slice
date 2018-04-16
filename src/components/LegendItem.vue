@@ -7,18 +7,11 @@
 
 <script>
 export default {
+  props: ['value', 'label', 'color'],
+  
   data() {
     return {
       isDisabled: false
-    }
-  },
-
-  props: ['value', 'label', 'color'],
-
-  methods: {
-    toggle() {
-      this.$emit('toggle', this.label);
-      this.isDisabled = !this.isDisabled;
     }
   },
 
@@ -35,6 +28,13 @@ export default {
           backgroundColor: this.color
         }
       }
+    }
+  },
+
+  methods: {
+    toggle() {
+      this.$emit('toggle', this.label);
+      this.isDisabled = !this.isDisabled;
     }
   }
 }

@@ -15,7 +15,10 @@ import VueSlice from '../src/index.js'
 import {scaleOrdinal, schemeCategory10} from 'd3'
 
 export default {
-  // Is there any typical or standard order to these?
+  components: {
+    VueSlice
+  },
+  
   data() {
     return {
       rawValues: [
@@ -33,11 +36,7 @@ export default {
       donutRatio: .5,
       colorScheme: scaleOrdinal(schemeCategory10)
     }
-  },
-
-  components: {
-    VueSlice
-  },
+  }
 }
 </script>
 

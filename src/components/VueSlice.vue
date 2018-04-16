@@ -27,6 +27,11 @@ import ChartLegend from './ChartLegend.vue'
 import { pie, arc } from 'd3-shape'
 
 export default {
+  components: {
+    Arc,
+    ChartLegend
+  },
+
   props: {
     values: {
       required: true,
@@ -63,46 +68,6 @@ export default {
       svgHeight: null,
       svgWidth: null,
       disabled: []
-    }
-  },
-
-  components: {
-    Arc,
-    ChartLegend
-  },
-
-  mounted() {
-    this.updateDimensions();
-    window.addEventListener('resize', this.updateDimensions);
-  },
-
-  beforeDestroy() {
-    window.removeEventListener('resize', this.updateDimensions);
-  },
-
-  methods: {
-    updateDimensions() {
-      if(!this.$refs.slicechart || !this.$refs.svg) return
-      this.myHeight = this.height || this.$refs.slicechart.getBoundingClientRect().height;
-      this.myWidth = this.width || this.$refs.slicechart.getBoundingClientRect().width;
-      this.svgHeight = this.$refs.svg.getBoundingClientRect().height;
-      this.svgWidth = this.$refs.svg.getBoundingClientRect().width;
-    },
-
-    toggle(label) {
-      let index = this.disabled.indexOf(label);
-      let disableTemp = this.disabled.slice();
-      if(index > -1) {
-        disableTemp.splice(index, 1)
-      }else{
-        disableTemp.push(label)
-      }
-      this.disabled = disableTemp;
-      this.$emit('toggle', label, this.disabled, this.enabledFormatedValues);
-    },
-
-    setDisabled(labels) {
-      this.disabled = labels;
     }
   },
 
@@ -153,6 +118,41 @@ export default {
         defaultStyles.height = this.height;
       }
       return defaultStyles;
+    }
+  },
+
+  mounted() {
+    this.updateDimensions();
+    window.addEventListener('resize', this.updateDimensions);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateDimensions);
+  },
+
+  methods: {
+    updateDimensions() {
+      if(!this.$refs.slicechart || !this.$refs.svg) return
+      this.myHeight = this.height || this.$refs.slicechart.getBoundingClientRect().height;
+      this.myWidth = this.width || this.$refs.slicechart.getBoundingClientRect().width;
+      this.svgHeight = this.$refs.svg.getBoundingClientRect().height;
+      this.svgWidth = this.$refs.svg.getBoundingClientRect().width;
+    },
+
+    toggle(label) {
+      let index = this.disabled.indexOf(label);
+      let disableTemp = this.disabled.slice();
+      if(index > -1) {
+        disableTemp.splice(index, 1)
+      }else{
+        disableTemp.push(label)
+      }
+      this.disabled = disableTemp;
+      this.$emit('toggle', label, this.disabled, this.enabledFormatedValues);
+    },
+
+    setDisabled(labels) {
+      this.disabled = labels;
     }
   }
 }

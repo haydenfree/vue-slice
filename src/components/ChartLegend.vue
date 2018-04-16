@@ -21,15 +21,15 @@
 import LegendItem from './LegendItem.vue'
 
 export default {
+  components: {
+    LegendItem
+  },
+  
   props: {
     passedValues: {
       type: Array,
       required: true
     }
-  },
-
-  components: {
-    LegendItem
   },
 
   methods: {
