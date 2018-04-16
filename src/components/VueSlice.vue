@@ -13,8 +13,9 @@
         ></path>
       </g>
     </svg>
-    <chart-legend 
-     :passedValues = 'formatedValues'
+    <chart-legend
+      v-if = "showLegend"
+      :passedValues = 'formatedValues'
       @toggle='toggle'
     ></chart-legend>
   </div>
@@ -46,6 +47,11 @@ export default {
     colorScheme: {
       required: true,
       type: Function
+    },
+    showLegend: {
+      required: false,
+      type: Boolean,
+      default: true
     }
   },
 
