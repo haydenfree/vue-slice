@@ -33,7 +33,10 @@
     }
   }
   .chart-legend {
-    border: 1px black solid;
+    background: rgb(251, 251, 251);
+    border: 1px solid #666;
+    border-radius: 5px;
+    box-shadow: #666 1px 1px 5px 1px;
     ul {
       margin: 1em auto;
       li {
