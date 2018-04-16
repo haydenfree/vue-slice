@@ -49,8 +49,8 @@ export default {
     }
   },
 
-  data(){
-    return{
+  data() {
+    return {
       myValues: null,
       myHeight: null,
       myWidth: null,
@@ -70,12 +70,12 @@ export default {
     window.addEventListener('resize', this.updateDimensions);
   },
 
-  beforeDestroy(){
+  beforeDestroy() {
     window.removeEventListener('resize', this.updateDimensions);
   },
 
   methods: {
-    updateDimensions(){
+    updateDimensions() {
       if(!this.$refs.slicechart || !this.$refs.svg) return
       this.myHeight = this.height || this.$refs.slicechart.getBoundingClientRect().height;
       this.myWidth = this.width || this.$refs.slicechart.getBoundingClientRect().width;
@@ -83,10 +83,10 @@ export default {
       this.svgWidth = this.$refs.svg.getBoundingClientRect().width;
     },
 
-    toggle(label){
+    toggle(label) {
       let index = this.disabled.indexOf(label);
       let disableTemp = this.disabled.slice();
-      if(index > -1){
+      if(index > -1) {
         disableTemp.splice(index, 1)
       }else{
         disableTemp.push(label)
@@ -95,7 +95,7 @@ export default {
       this.$emit('toggle', label, this.disabled, this.enabledFormatedValues);
     },
 
-    setDisabled(labels){
+    setDisabled(labels) {
       this.disabled = labels;
     }
   },
@@ -119,31 +119,31 @@ export default {
       })
     },
 
-    enabledFormatedValues(){
+    enabledFormatedValues() {
       return this.formatedValues.filter(value => this.disabled.indexOf(value.label) === -1)
     },
     computedValues() {
       return pie().value(v => v.value)(this.enabledFormatedValues)
     },
 
-    radius(){
+    radius() {
       return 0.5 * (Math.min(this.svgHeight, this.svgWidth));
     },
     
-    arc(){
+    arc() {
       return arc().innerRadius(this.donutRatio * this.radius).outerRadius(this.radius);
     },
 
-    translate(){
+    translate() {
       return `translate(${0.5*this.svgWidth}, ${0.5*this.svgHeight})`
     },
 
-    styles(){
+    styles() {
       const defaultStyles = {}
-      if(this.width){
+      if(this.width) {
         defaultStyles.width = this.width;
       }
-      if(this.height){
+      if(this.height) {
         defaultStyles.height = this.height;
       }
       return defaultStyles;
