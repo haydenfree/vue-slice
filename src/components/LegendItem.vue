@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       isDisabled: false
     }
@@ -16,7 +16,7 @@ export default {
   props: ['value', 'label', 'color'],
 
   methods: {
-    toggle(){
+    toggle() {
       this.$emit('toggle', this.label);
       this.isDisabled = !this.isDisabled;
     }
@@ -24,7 +24,7 @@ export default {
 
   computed: {
     styleObject() {
-      if(this.isDisabled){
+      if(this.isDisabled) {
         return {
           borderWidth: '3px',
           borderStyle: 'solid',

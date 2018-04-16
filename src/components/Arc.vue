@@ -9,7 +9,7 @@ export default {
   props: ['value', 'arc'],
 
   computed: {
-    d(){
+    d() {
       return this.arc(this.value);
     }
   }
