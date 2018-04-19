@@ -1,5 +1,5 @@
 <template>
-  <div id = 'app'>
+  <div id = 'demo'>
     <vue-slice
       ref = 'chart'
       class='chart'
